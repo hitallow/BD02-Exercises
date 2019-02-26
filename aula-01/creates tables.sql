@@ -38,9 +38,4 @@ alter table projeto add constraint projetoFuncFK foreign key (codFuncionarioResp
 alter table AtividadeProjeto add constraint AtvProProjFK foreign key (codProjeto) references projeto(codigo);
 alter table AtividadeProjeto add constraint AtvProAtvFK foreign key (codAtividade) references atividade(codigo);
 
-insert into atividade values(1, 'Descrição da atividade 1 ');
-insert into atividade values(2, 'Descrição da atividade 2');
-insert into atividade values(3, 'Descrição da atividade 3 ');
-insert into atividade values(4, 'Descrição da atividade 4 ');
-insert into atividade values(5, 'Descrição da atividade 5 ');
 
