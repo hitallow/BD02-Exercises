@@ -1,2 +1,1 @@
-# BD02-Exercises
-Repositório de estudo de banco de dados avançado
+<h1>Aulas de Banco de dados avançado</h1> <p> Este repositório tem por finalidade, ser usado para estudo de banco de dados avançados, fazendo uso de técnicas avançadas, e utilizando vários bancos de informações diferentes, que podem ser usados por outros alunos. </p> <ul> <li> <h4>Aula 01</h4> <p>Este banco de dados simula uma empresa, com projetos departamentos e funcionários, segue o esquema relacional (MER):</p> <img src='https://github.com/hitallow/BD02-Exercises/blob/master/aula-01/diagramas/diagrama%20relacional.jpg'> </li> </ul>
