@@ -65,3 +65,8 @@ select p.descricao,d.descricao,f.nome,d2.descricao  from projeto p inner join de
 */
 
 select p.descricao, d.descricao, f.nome from projeto p left join departamento d on(p.codDept = d.codigo) left join funcionario f on(f.codigo = p.codResponsavel) where f.codDept <> d.codigo ;
+
+/*
+	12 - Faça uma consulta que selecione o nome do projeto, data de início e fim do 			projeto, o nome da atividade do projeto, data de início e fim da atividade.
+*/
+select p.descricao,p.dataInicio, p.dataFim, atv.descricao, atvp.dataInicio, atvp.dataFim from projeto p left join atividade atv on(atv.codigo = p.codigo) left join AtividadeProjeto atvp on(atv.codigo = atvp.codAtividade);
