@@ -51,3 +51,10 @@ create view SalGerente as select f.salario, d.codigo from funcionario f inner jo
  on(f.codigo = d.codGerente);
  
 select f.nome, fp.totalProj from SalGerente sg, FuncSumProj fp inner join funcionario f on(f.codigo = fp.codigo) where fp.salario > sg.salario and sg.codigo = f.codDept ;
+
+
+/*
+	10 - Faça uma consulta que selecione o nome do projeto, o nome do departamento do 		projeto, o nome do funcionário responsável pelo projeto, o nome do departamento 	do 	funcionário responsável.
+*/
+
+select p.descricao,d.descricao,f.nome,d2.descricao  from projeto p inner join departamento d on(p.codDept = d.codigo) inner join funcionario f on(p.codResponsavel = f.codigo) left join departamento d2 on(f.codDept = d2.codigo) ; 
