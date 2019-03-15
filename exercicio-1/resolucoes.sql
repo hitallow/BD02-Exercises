@@ -86,4 +86,22 @@ select p.descricao,p.dataInicio, p.dataFim, atv.descricao, atvp.dataInicio, atvp
 /*
 	13 - Faça uma consulta que selecione o nome do projeto, data de início e fim do 			projeto, o nome da atividade do projeto, data de início e fim da atividade. Só 		devem ser exibidas às atividades que começarem antes da data de início do 			projeto ou que terminarem depois do final do projeto. 
 */
+
 select p.descricao, p.dataInicio, p.dataFim, atv.descricao from projeto p left join atividade atv on(p.codigo = atv.codigo) left join AtividadeProjeto atvp on(atvp.codProjeto = p.codigo) where atvp.dataInicio < p.dataInicio or atvp.dataFim < p.dataFim ;
+
+/*
+	14 - Faça uma consulta que selecione o nome dos funcionários responsáveis por
+    atividades, o número de atividades que este funcionário é responsável. Crie e use
+    views na consulta. 
+*/
+
+create view funcProj as select f.nome, count(*) as sumProj from funcionario f inner join AtividadeProjeto atv on(atv.codigoResponsavel = f.codigo) GROUP by f.nome;
+select * from funcProj;
+drop view funcProj;
+
+/*
+	15 - Faça uma consulta que selecione o nome dos projetos e o nome dos funcionários responsáveis por esses projetos, a 		quantidade de atividades do projeto e a quantidade de responsáveis pela atividades (os responsável por atividades só devem
+    ser contados uma única vez no projeto). Crie e use views na consulta.
+	count(f.nome) as sumFunc 
+*/
+select p.descricao, f.nome,p.codigo from projeto p left join funcionario f on(f.codigo = p.codResponsavel) group by p.descricao;

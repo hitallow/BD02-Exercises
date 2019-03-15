@@ -137,6 +137,10 @@ INSERT into projeto(codigo,codDept,codResponsavel,dataInicio,dataFim,descricao)
 values(
 	8, 6,13 ,'2015-03-01','2020-01-01','Manutenção de computadores'
 );
+insert into projeto(codDept,codigo,codResponsavel,dataFim, dataInicio, descricao) values
+    (
+        4,11,14,"2019-01-09","2021-01-09", 'atividade de regulamentação'
+);
 
 
 /*Inserts na tabela atividade */
