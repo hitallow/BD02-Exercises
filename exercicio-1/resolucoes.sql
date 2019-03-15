@@ -39,3 +39,15 @@ drop view viewAux;
 create view viewAux as select count(f.nome)as total, f.codDept as codigoDepartamento from funcionario f GROUP by f.codDept;
 
 select d.descricao, f.nome, v.total from viewAux v,departamento d inner join funcionario f on(d.codGerente = f.codigo) WHERE v.codigoDepartamento = d.codigo;
+
+
+/* 8 - Faça uma consulta que selecione o nome do departamento, o nome do gerente, e o número de projetos de cada departamento. Deve aparecer os departamentos sem gerente e sem projetos. Crie e use views na consulta, se necessário.*/
+select d.descricao,f.nome,(select count(p.codigo) from projeto p where p.codDept = d.codigo) as total_projetos from departamento d, funcionario f where d.codigo = f.codigo;
+
+/* 9 - Faça uma consulta que selecione o nome dos funcionários responsáveis por projetos, o número de projetos que este funcionário é responsável e seus salários, mas apenas os funcionários que ganhem mais que o gerente do seu departamento. Crie e use views na consulta. * */ 
+create view FuncSumProj as select f.nome,f.codigo,f.salario ,count(f.codigo) as totalProj from projeto p inner join funcionario f on(f.codigo = p.codResponsavel) GROUP by p.codResponsavel;
+
+create view SalGerente as select f.salario, d.codigo from funcionario f inner join departamento d
+ on(f.codigo = d.codGerente);
+ 
+select f.nome, fp.totalProj from SalGerente sg, FuncSumProj fp inner join funcionario f on(f.codigo = fp.codigo) where fp.salario > sg.salario and sg.codigo = f.codDept ;

@@ -125,6 +125,19 @@ INSERT into projeto(codigo,codDept,codResponsavel,dataInicio,dataFim,descricao)
 values(
 	5, 5,13 ,'2017-03-01','2019-01-01','Criação de banco de dados'
 );
+INSERT into projeto(codigo,codDept,codResponsavel,dataInicio,dataFim,descricao) 
+values(
+	6, 2, 9 ,'2014-11-21','2018-11-01','Criação de propaganda para novo público'
+);
+INSERT into projeto(codigo,codDept,codResponsavel,dataInicio,dataFim,descricao) 
+values(
+	7, 5,7 ,'2016-03-01','2017-09-11','Documentação de logística'
+);
+INSERT into projeto(codigo,codDept,codResponsavel,dataInicio,dataFim,descricao) 
+values(
+	8, 6,13 ,'2015-03-01','2020-01-01','Manutenção de computadores'
+);
+
 
 /*Inserts na tabela atividade */
 
