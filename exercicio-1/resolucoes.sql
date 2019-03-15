@@ -28,23 +28,35 @@ select f.nome, f.salario, d.descricao from funcionario f inner join departamento
         
 */
 
-/* 6 - Faça uma consulta que selecione o nome, o salário dos funcionário, e a descrição do departamento, mesmo que eles não tenham departamentos associados. */
+/* 
+    6 - Faça uma consulta que selecione o nome, o salário dos funcionário, e a descrição do departamento, mesmo que eles não tenham departamentos associados. 
+*/
 
 select f.nome, f.salario, d.descricao from funcionario f left join departamento d on(f.codigo =d.codigo)
 
-/* 7 - Faça uma consulta que selecione o nome do departamento, o nome do gerente, e o número de funcionários de cada departamento. Deve aparecer os departamentos sem gerente e sem funcionários. Crie uma view para totalizar o número de funcionários em cada departamento e utilize-a na consulta.*/
+/*  
+    7 - Faça uma consulta que selecione o nome do departamento, o nome do gerente, e o número de funcionários de cada departamento. Deve aparecer os departamentos sem gerente e sem
+    funcionários. Crie uma view para totalizar o número de funcionários em cada departamento e utilize-a na consulta.
+*/
 
-drop view viewAux;
+
 
 create view viewAux as select count(f.nome)as total, f.codDept as codigoDepartamento from funcionario f GROUP by f.codDept;
 
 select d.descricao, f.nome, v.total from viewAux v,departamento d inner join funcionario f on(d.codGerente = f.codigo) WHERE v.codigoDepartamento = d.codigo;
+drop view viewAux;
 
+/* 
+    8 - Faça uma consulta que selecione o nome do departamento, o nome do gerente, e o número de projetos de cada departamento. Deve aparecer os departamentos sem gerente e sem projetos. Crie
+    use views na consulta, se necessário.
+*/
 
-/* 8 - Faça uma consulta que selecione o nome do departamento, o nome do gerente, e o número de projetos de cada departamento. Deve aparecer os departamentos sem gerente e sem projetos. Crie e use views na consulta, se necessário.*/
 select d.descricao,f.nome,(select count(p.codigo) from projeto p where p.codDept = d.codigo) as total_projetos from departamento d, funcionario f where d.codigo = f.codigo;
 
-/* 9 - Faça uma consulta que selecione o nome dos funcionários responsáveis por projetos, o número de projetos que este funcionário é responsável e seus salários, mas apenas os funcionários que ganhem mais que o gerente do seu departamento. Crie e use views na consulta. * */ 
+/* 
+    9 - Faça uma consulta que selecione o nome dos funcionários responsáveis por projetos, o número de projetos que este funcionário é responsável e seus salários, mas apenas os funcionários
+    que ganhem mais que o gerente do seu departamento. Crie e use views na consulta. 
+*/ 
 create view FuncSumProj as select f.nome,f.codigo,f.salario ,count(f.codigo) as totalProj from projeto p inner join funcionario f on(f.codigo = p.codResponsavel) GROUP by p.codResponsavel;
 
 create view SalGerente as select f.salario, d.codigo from funcionario f inner join departamento d
@@ -70,3 +82,8 @@ select p.descricao, d.descricao, f.nome from projeto p left join departamento d 
 	12 - Faça uma consulta que selecione o nome do projeto, data de início e fim do 			projeto, o nome da atividade do projeto, data de início e fim da atividade.
 */
 select p.descricao,p.dataInicio, p.dataFim, atv.descricao, atvp.dataInicio, atvp.dataFim from projeto p left join atividade atv on(atv.codigo = p.codigo) left join AtividadeProjeto atvp on(atv.codigo = atvp.codAtividade);
+
+/*
+	13 - Faça uma consulta que selecione o nome do projeto, data de início e fim do 			projeto, o nome da atividade do projeto, data de início e fim da atividade. Só 		devem ser exibidas às atividades que começarem antes da data de início do 			projeto ou que terminarem depois do final do projeto. 
+*/
+select p.descricao, p.dataInicio, p.dataFim, atv.descricao from projeto p left join atividade atv on(p.codigo = atv.codigo) left join AtividadeProjeto atvp on(atvp.codProjeto = p.codigo) where atvp.dataInicio < p.dataInicio or atvp.dataFim < p.dataFim ;
