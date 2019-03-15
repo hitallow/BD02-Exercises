@@ -104,4 +104,4 @@ drop view funcProj;
     ser contados uma única vez no projeto). Crie e use views na consulta.
 	count(f.nome) as sumFunc 
 */
-select p.descricao, f.nome,p.codigo from projeto p left join funcionario f on(f.codigo = p.codResponsavel) group by p.descricao;
+select p.descricao, f.nome,p.codigo, count(atvp.codigo) as totalProj, count(DISTINCT atvp.codigoResponsavel) as totalFuncEnvolvidos from projeto p left join funcionario f on(f.codigo = p.codResponsavel) left join AtividadeProjeto atvp on(atvp.codProjeto = p.codigo ) group by p.descricao;

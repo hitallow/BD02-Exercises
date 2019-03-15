@@ -150,6 +150,13 @@ INSERT into atividade(codigo, descricao) VALUES(2, 'descricao da atividade 2');
 INSERT into atividade(codigo, descricao) VALUES(3, 'descricao da atividade 3');
 INSERT into atividade(codigo, descricao) VALUES(4, 'descricao da atividade 4');
 INSERT into atividade(codigo, descricao) VALUES(5, 'descricao da atividade 5');
+insert into atividade values(6, "atividade 6");
+insert into atividade values(7, "atividade 7");
+insert into atividade values(8, "atividade 8");
+insert into atividade values(9, "atividade 9");
+insert into atividade values(10, "atividade 10");
+
+
 
 /* inserindo atividades de projeto*/
 
@@ -159,5 +166,10 @@ insert into AtividadeProjeto (codAtividade,codigoResponsavel, codProjeto,dataFim
 insert into AtividadeProjeto (codAtividade, codigoResponsavel,codProjeto,dataFim,dataInicio) values(3, 2, 4,'2014-06-01','2019-01-01');
 insert into AtividadeProjeto (codAtividade, codigoResponsavel,codProjeto,dataFim,dataInicio) values(4,7, 5,'2018-01-01','2019-01-01');
 insert into AtividadeProjeto (codAtividade, codigoResponsavel, codProjeto,dataFim,dataInicio) values(5, 9, 1,'2017-01-01','2018-03-29');
+insert into AtividadeProjeto (codAtividade,codigoResponsavel, codProjeto,dataFim,dataInicio) values(6, 6, 6,'2018-01-01','2019-01-01');
+insert into AtividadeProjeto (codAtividade,codigoResponsavel, codProjeto,dataFim,dataInicio) values(7, 3, 7,'2018-01-01','2019-01-01');
+insert into AtividadeProjeto (codAtividade,codigoResponsavel, codProjeto,dataFim,dataInicio) values(8, 9, 9,'2018-01-01','2019-01-01');
+insert into AtividadeProjeto (codAtividade,codigoResponsavel, codProjeto,dataFim,dataInicio) values(9, 2,11,'2018-01-01','2019-01-01');
+insert into AtividadeProjeto (codAtividade,codigoResponsavel, codProjeto,dataFim,dataInicio) values(10, 11, 4,'2018-01-01','2019-01-01');
 
 
