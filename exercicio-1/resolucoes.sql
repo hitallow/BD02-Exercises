@@ -58,3 +58,10 @@ select f.nome, fp.totalProj from SalGerente sg, FuncSumProj fp inner join funcio
 */
 
 select p.descricao,d.descricao,f.nome,d2.descricao  from projeto p inner join departamento d on(p.codDept = d.codigo) inner join funcionario f on(p.codResponsavel = f.codigo) left join departamento d2 on(f.codDept = d2.codigo) ; 
+
+
+/*
+	11 - Faça uma consulta que selecione o nome do projeto, o nome do departamento do 	projeto, o nome do funcionário responsável pelo projeto, o nome do departamento 	do funcionário responsável, mas apenas os projetos que o responsável é de outro 	departamento.
+*/
+
+select p.descricao, d.descricao, f.nome from projeto p left join departamento d on(p.codDept = d.codigo) left join funcionario f on(f.codigo = p.codResponsavel) where f.codDept <> d.codigo ;
