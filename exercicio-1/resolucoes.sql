@@ -8,7 +8,8 @@ SELECT f.nome from funcionario f where f.dtNascimento >(select min(f2.dtNascimen
 
 /* 03 - Faça uma consulta que selecione o nome e a data de nascimento dos funcionários com idade superior a 21 anos que não são gerentes. */
 
-select f.nome, f.dtNascimento from funcionario f WHERE f.dtNascimento < '1998-03-08' AND f.codigo not in(select codGerente from departamento);
+select f.nome, f.dtNascimento from funcionario f WHERE year(now()) - year(f.dtNascimento) >= 21 AND f.codigo not in(
+	select codGerente from departamento);
 
 /* 04 - Faça uma consulta que selecione o nome, o salário e o departamento dos funcionários que não são gerentes, ordenando pelo Código do Departamento. */
 
